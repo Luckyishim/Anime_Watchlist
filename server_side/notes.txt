@@ -1,0 +1,3 @@
+Here is what we will be needing in this app 
+and what feature it may have later on and 
+what you need to do before running it
