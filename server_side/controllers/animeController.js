@@ -11,9 +11,9 @@ export const getAllAnime = async (req, res) => {
     const skip = (page - 1) * limit;
 
     const anime = await Anime.find()
-    .skip(skip)
-    .limit(limit);
-res.json(anime)
+        .skip(skip)
+        .limit(limit);
+    res.json(anime)
 }
 
 //To get Anime by ID
@@ -49,14 +49,32 @@ export const deleteAllAnime = async (req, res) => {
 
 //To get Anime based on genre
 export const getActionAnime = async (req, res) => {
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
+
+    const skip = (page - 1) * limit;
+
     const filter = req.query.genre ? { genre: req.query.genre } : {}
     const anime = await Anime.find(filter)
+        .skip(skip)
+        .limit(limit)
     res.json(anime)
 }
 
 //To get Anime based on status
 export const getAnimeStatus = async (req, res) => {
-    const status = req.query.status ? { status: req.query.status } : {}
-    const anime = await Anime.find(status)
-    res.json(anime)
-}
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
+
+    const skip = (page - 1) * limit;
+
+    const filter = req.query.status
+        ? { status: req.query.status }
+        : {};
+
+    const anime = await Anime.find(filter)
+        .skip(skip)
+        .limit(limit);
+
+    res.json(anime);
+};
