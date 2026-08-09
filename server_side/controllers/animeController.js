@@ -6,13 +6,29 @@ import Anime from "../models/Anime.js"
 //To get all Anime
 export const getAllAnime = async (req, res) => {
     const page = Number(req.query.page) || 1;
-    const limit = Number(req.query.limit) || 10;
+    const limit = Number(req.query.limit) || 7;
 
     const skip = (page - 1) * limit;
 
-    const anime = await Anime.find()
+    const { sort, title } = req.query;
+    let sortOption = {};
+    let filter = {};
+
+    if (sort === "rating") {
+        sortOption = { rating: -1 };
+    }
+    if (sort === "episodes") {
+        sortOption = { episodes: -1 };
+    }
+    if (title) {
+        filter = {
+            title: { $regex: title, $options: "i" }
+        };
+    };
+    const anime = await Anime.find(filter)
+        .sort(sortOption)
         .skip(skip)
-        .limit(limit);
+        .limit(limit)
     res.json(anime)
 }
 
@@ -50,11 +66,17 @@ export const deleteAllAnime = async (req, res) => {
 //To get Anime based on genre
 export const getActionAnime = async (req, res) => {
     const page = Number(req.query.page) || 1;
-    const limit = Number(req.query.limit) || 10;
+    const limit = Number(req.query.limit) || 7;
 
     const skip = (page - 1) * limit;
 
-    const filter = req.query.genre ? { genre: req.query.genre } : {}
+    const filter = {
+        ...(req.query.genre && { genre: req.query.genre }),
+        ...(req.query.title && {
+            title: { $regex: req.query.title, $options: "i" }
+        })
+    }
+
     const anime = await Anime.find(filter)
         .skip(skip)
         .limit(limit)
@@ -64,13 +86,16 @@ export const getActionAnime = async (req, res) => {
 //To get Anime based on status
 export const getAnimeStatus = async (req, res) => {
     const page = Number(req.query.page) || 1;
-    const limit = Number(req.query.limit) || 10;
+    const limit = Number(req.query.limit) || 7;
 
     const skip = (page - 1) * limit;
 
-    const filter = req.query.status
-        ? { status: req.query.status }
-        : {};
+    const filter = {
+        ...(req.query.status && { status: req.query.status }),
+        ...(req.query.title && {
+            title: { $regex: req.query.title, $options: "i" }
+        })
+    }
 
     const anime = await Anime.find(filter)
         .skip(skip)
@@ -78,3 +103,4 @@ export const getAnimeStatus = async (req, res) => {
 
     res.json(anime);
 };
+
