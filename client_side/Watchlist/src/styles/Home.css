@@ -1,0 +1,43 @@
+.title {
+    padding: 25px 30px;
+    margin: 0px 50px;
+    display: grid;
+    gap: 15px;
+
+}
+
+.bar {
+    padding: 25px 30px;
+    margin: 0px 50px;
+    display: grid;
+    gap: 5px;
+    background-color: #635BFF;
+    color: white;
+    border-radius: 25px;
+
+    p {
+        color: white;
+    }
+}
+
+.btn-main {
+    margin: 30px 55px;
+    padding: 15px 18px;
+    border-radius: 20px;
+    background-color: white;
+    color: #635BFF;
+    font-weight: bold;
+    font-size: 15px;
+    border: 1px solid #E6E8EF;
+
+}
+
+.btn-main:hover {
+    background-color: #e5e3ff;
+    border: 1px solid #E6E8EF;
+}
+
+.recents {
+    margin: 0px 50px;
+    font-size: 20px;
+}

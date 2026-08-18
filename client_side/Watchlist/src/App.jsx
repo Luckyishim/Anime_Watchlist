@@ -1,17 +1,28 @@
 import "./styles/App.css"
 import Navbar from './components/Navbar';
 import Footer from './components/Footer'
+import { Route, Routes } from 'react-router-dom'
+import Home from './pages/Home';
+import MyWatchlist from './pages/MyWatchlist';
+import AddAnime from './pages/AddAnime';
+import About from './pages/About';
+import Card from "./components/Card";
 function App() {
   return (
     <>
-    <div className='app-wrapper'>
-      <Navbar />
-      <main className='main-stuff'>
-
-      </main>
-
-      <Footer />
-    </div>
+      <div className='app-wrapper'>
+        <Navbar />
+        <main className='main-stuff'>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/MyWatchList" element={<MyWatchlist />} />
+            <Route path="/AddAnime" element={<AddAnime />} />
+            <Route path="/About" element={<About />} />
+            <Route path="/testing" element={<Card />}/>
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }

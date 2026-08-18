@@ -1,12 +1,12 @@
-import logo from '../assets/image.png';
-import { Link, useNavigate } from "react-router-dom";
+import logo from '../assets/logo.png';
+import { NavLink, useNavigate } from "react-router-dom";
 import '../styles/Navbar.css'
 
 export default function Navbar() {
     const navigate = useNavigate();
 
     const handleChange = () => {
-        navigate('/anime')
+        navigate('/')
     }
 
     return (
@@ -15,10 +15,10 @@ export default function Navbar() {
                 <img src={logo} alt="logo" width="60px" height="60px" onClick={handleChange} />
             </div>
             <div className='links'>
-                <Link style={{ textDecoration: 'none' }} >Home</Link>
-                <Link>My Watchlist</Link>
-                <Link>Add Anime</Link>
-                <Link>About</Link>
+                <NavLink to='/' >Home</NavLink>
+                <NavLink to='/MyWatchList' >My Watchlist</NavLink>
+                <NavLink to='/AddAnime' >Add Anime</NavLink>
+                <NavLink to='/About' >About</NavLink>
             </div>
             <div className='search-bar'>
                 <input type='text' placeholder='Search Anime...' />
