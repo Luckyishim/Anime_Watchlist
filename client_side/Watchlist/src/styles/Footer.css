@@ -1,0 +1,20 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    padding: 0 40px;
+}
+
+h2 {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+p {
+    color: #69707D;
+}
+
+.copyright {
+    font-size: 15px;
+}
