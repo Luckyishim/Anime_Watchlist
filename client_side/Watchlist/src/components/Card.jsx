@@ -6,7 +6,7 @@ export default function Card({ anime }) {
   return (
     <div className="card">
       <div className="status">
-        <h2>{anime.title}</h2>
+        <h4>{anime.title}</h4>
         <p className={`badge ${statusClass}`} >{anime.status}</p>
       </div>
       <div className="genre">

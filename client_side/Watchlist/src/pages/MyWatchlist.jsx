@@ -1,5 +1,11 @@
+import Watchlist from './../components/Watchlist';
 export default function MyWatchlist() {
   return (
-    <div>MyWatchlist</div>
+    <div>
+
+      <div>
+        {<Watchlist />}
+      </div>
+    </div>
   )
 }

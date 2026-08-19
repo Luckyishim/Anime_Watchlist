@@ -14,3 +14,6 @@
 .main-stuff {
     background-color: #F8F9FC;
 }
+html {
+  scrollbar-gutter: stable;
+}
