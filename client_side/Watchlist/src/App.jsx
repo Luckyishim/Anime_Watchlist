@@ -7,6 +7,7 @@ import MyWatchlist from './pages/MyWatchlist';
 import AddAnime from './pages/AddAnime';
 import About from './pages/About';
 import Card from "./components/Card";
+import Card_Details from './components/Card_Details';
 function App() {
   return (
     <>
@@ -19,6 +20,7 @@ function App() {
             <Route path="/AddAnime" element={<AddAnime />} />
             <Route path="/About" element={<About />} />
             <Route path="/testing" element={<Card />}/>
+            <Route path="/test2" element={<Card_Details />}/>
           </Routes>
         </main>
         <Footer />
