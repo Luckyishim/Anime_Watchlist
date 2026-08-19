@@ -6,7 +6,7 @@ import Anime from "../models/Anime.js"
 //To get all Anime
 export const getAllAnime = async (req, res) => {
     const page = Number(req.query.page) || 1;
-    const limit = Number(req.query.limit) || 7;
+    const limit = Number(req.query.limit) || 9;
 
     const skip = (page - 1) * limit;
 
@@ -66,7 +66,7 @@ export const deleteAllAnime = async (req, res) => {
 //To get Anime based on genre
 export const getActionAnime = async (req, res) => {
     const page = Number(req.query.page) || 1;
-    const limit = Number(req.query.limit) || 7;
+    const limit = Number(req.query.limit) || 9;
 
     const skip = (page - 1) * limit;
 
@@ -86,7 +86,7 @@ export const getActionAnime = async (req, res) => {
 //To get Anime based on status
 export const getAnimeStatus = async (req, res) => {
     const page = Number(req.query.page) || 1;
-    const limit = Number(req.query.limit) || 7;
+    const limit = Number(req.query.limit) || 9;
 
     const skip = (page - 1) * limit;
 
