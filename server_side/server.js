@@ -2,11 +2,14 @@ import { configDotenv } from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import animeRoutes from "./routes/animeRoutes.js";
+import cors from "cors";
 
 //to add the .env file in other places
 configDotenv();
 
 const app = express();
+
+
 
 //For the connection port
 const PORT = process.env.PORT || 3050
@@ -25,6 +28,12 @@ connectDB();
 
 //Routes by default and using express json format
 app.use(express.json())
+
+//Cors for connecting with frontend
+app.use(cors({
+    origin: process.env.CLIENT_URL
+}))
+
 app.use('/', animeRoutes)
 
 
