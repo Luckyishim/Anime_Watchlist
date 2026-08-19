@@ -6,8 +6,8 @@ import Home from './pages/Home';
 import MyWatchlist from './pages/MyWatchlist';
 import AddAnime from './pages/AddAnime';
 import About from './pages/About';
-import Card from "./components/Card";
-import Card_Details from './components/Card_Details';
+import Card_Details from './components/Watchlist';
+import Watchlist from "./components/Watchlist";
 function App() {
   return (
     <>
@@ -19,7 +19,7 @@ function App() {
             <Route path="/MyWatchList" element={<MyWatchlist />} />
             <Route path="/AddAnime" element={<AddAnime />} />
             <Route path="/About" element={<About />} />
-            <Route path="/testing" element={<Card />}/>
+            <Route path="/testing" element={<Watchlist />}/>
             <Route path="/test2" element={<Card_Details />}/>
           </Routes>
         </main>
