@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import MyWatchlist from './pages/MyWatchlist';
 import AddAnime from './pages/AddAnime';
 import About from './pages/About';
+import Pagination from './components/Pagination';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/MyWatchList" element={<MyWatchlist />} />
             <Route path="/AddAnime" element={<AddAnime />} />
             <Route path="/About" element={<About />} />
+            <Route path="/Testing" element={<Pagination/>}/>
           </Routes>
         </main>
         <Footer />

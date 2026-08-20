@@ -5,7 +5,7 @@ export default function Card({ anime }) {
   const statusClass = anime.status.toLowerCase().replace(/\s+/g, '-');
   return (
     <div className="card">
-      <div className="status">
+      <div className="status"> 
         <h4>{anime.title}</h4>
         <p className={`badge ${statusClass}`} >{anime.status}</p>
       </div>

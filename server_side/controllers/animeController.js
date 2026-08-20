@@ -3,15 +3,14 @@ import Anime from "../models/Anime.js"
 
 //contorllers for each routes
 
-//To get all Anime
+// To get all Anime
 export const getAllAnime = async (req, res) => {
     const page = Number(req.query.page) || 1;
     const limit = Number(req.query.limit) || 9;
-
     const skip = (page - 1) * limit;
 
     const { sort, title } = req.query;
-    let sortOption = {};
+    let sortOption = { _id: -1 }; 
     let filter = {};
 
     if (sort === "rating") {
@@ -24,13 +23,25 @@ export const getAllAnime = async (req, res) => {
         filter = {
             title: { $regex: title, $options: "i" }
         };
-    };
+    }
+//for filtering and dividing pagination in frontend
+    const totalItems = await Anime.countDocuments(filter);
+    const totalPages = Math.ceil(totalItems / limit);
+
     const anime = await Anime.find(filter)
         .sort(sortOption)
         .skip(skip)
-        .limit(limit)
-    res.json(anime)
-}
+        .limit(limit);
+
+
+        //help in frontend UI and all
+    res.json({
+        data: anime,
+        currentPage: page,
+        totalPages,
+        totalItems,
+    });
+};
 
 //To get Anime by ID
 export const getAnimeById = async (req, res) => {
