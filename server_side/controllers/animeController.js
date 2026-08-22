@@ -10,7 +10,7 @@ export const getAllAnime = async (req, res) => {
     const skip = (page - 1) * limit;
 
     const { sort, title } = req.query;
-    let sortOption = { _id: -1 }; 
+    let sortOption = { _id: -1 };
     let filter = {};
 
     if (sort === "rating") {
@@ -24,7 +24,7 @@ export const getAllAnime = async (req, res) => {
             title: { $regex: title, $options: "i" }
         };
     }
-//for filtering and dividing pagination in frontend
+    //for filtering and dividing pagination in frontend
     const totalItems = await Anime.countDocuments(filter);
     const totalPages = Math.ceil(totalItems / limit);
 
@@ -34,7 +34,7 @@ export const getAllAnime = async (req, res) => {
         .limit(limit);
 
 
-        //help in frontend UI and all
+    //help in frontend UI and all
     res.json({
         data: anime,
         currentPage: page,
@@ -115,3 +115,24 @@ export const getAnimeStatus = async (req, res) => {
     res.json(anime);
 };
 
+//Getting Total Anime
+export const getAnimeCount = async (req, res) => {
+    const totalAnime = await Anime.countDocuments();
+
+    res.json({
+        totalAnime
+    })
+};
+
+//Getting specific Status total
+export const getAnimeStatusCounts = async (req, res) => {
+    const statusCounts = await Anime.aggregate([
+        {
+            $group: {
+                _id: "$status",
+                count: { $sum: 1 } //Adds 1 for each matching documents
+            }
+        }
+    ])
+    res.json(statusCounts)
+}
