@@ -1,4 +1,5 @@
 import Watchlist from './../components/Watchlist';
+import StatsInfo from './../components/StatsInfo';
 export default function MyWatchlist() {
   return (
     <div>
@@ -6,12 +7,8 @@ export default function MyWatchlist() {
         <h1>My Anime Watchlist</h1>
         <p>Manage and Filter every anime in your collection</p>
       </div>
-      <div className="stats">
-        <h3>
-          24
-        </h3>
-        <p>Total Anime</p>
-
+      <div className="display">
+        <StatsInfo />
       </div>
       <div>
         {<Watchlist />}
